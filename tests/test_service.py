@@ -19,8 +19,7 @@ def test_get_github_token_missing(monkeypatch):
     monkeypatch.delenv("GITHUB_TOKEN", raising=False)
     # Patch load_dotenv to a no-op so .env is not loaded during this test
     with patch("echo_bot.service.load_dotenv", lambda: None):
-        with pytest.raises(RuntimeError, match="GITHUB_TOKEN environment variable not set."):
-            service.get_github_token()
+        assert service.get_github_token() is None
 
 
 def test_send_message_success(monkeypatch):

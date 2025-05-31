@@ -25,7 +25,7 @@ def get_github_token() -> str:
     load_dotenv()
     token = os.getenv("GITHUB_TOKEN")
     if not token:
-        raise RuntimeError("GITHUB_TOKEN environment variable not set.")
+        return None
     return token
 
 
@@ -36,9 +36,12 @@ def send_message(messages: Sequence[dict[str, Any]]) -> str:
     :param messages: The list of chat messages (role/content dicts).
     :return: The assistant's reply as a string.
     """
+    token = get_github_token()
+    if not token:
+        return "Error: GITHUB_TOKEN environment variable not set. Please set it in your environment or .env file."
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": f"Bearer {get_github_token()}",
+        "Authorization": f"Bearer {token}",
         "X-GitHub-Api-Version": "2022-11-28",
         "Content-Type": "application/json",
     }

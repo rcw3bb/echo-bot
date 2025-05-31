@@ -17,7 +17,7 @@ def run_chatbot() -> None:
     """
     Runs the CLI chatbot loop.
     """
-    print("Welcome to echo-bot! Type 'exit' to quit.")
+    print("Welcome to echo-bot v1.0.1! Type 'exit' to quit.")
     messages: list[dict[str, str]] = [
         {"role": "system", "content": "You are Echo a helpful assistant."}
     ]

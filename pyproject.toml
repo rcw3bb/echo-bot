@@ -1,6 +1,6 @@
 [project]
 name = "echo-bot"
-version = "1.0.0"
+version = "1.0.1"
 description = "A simple CLI chatbot."
 authors = [
     {name = "Ron Webb",email = "ron@ronella.xyz"}

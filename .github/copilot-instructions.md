@@ -1,7 +1,7 @@
 Project info:
 - Project name: echo-bot
 - Project description: A simple CLI chatbot.
-- Project version: 1.0.0
+- Project version: 1.0.1
 - Author name: Ron Webb
 - Author email: ron@ronella.xyz
 - Main package: echo_bot
