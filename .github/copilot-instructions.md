@@ -1,7 +1,7 @@
 Project info:
 - Project name: echo-bot
 - Project description: A simple CLI chatbot.
-- Project version: 1.0.1
+- Project version: 1.1.0
 - Author name: Ron Webb
 - Author email: ron@ronella.xyz
 - Main package: echo_bot
@@ -42,6 +42,13 @@ CHANGELOG.md
 README.md
 ```
 
+Coding principles:
+
+SOLID principles must be followed.
+DRY (Don't Repeat Yourself) principle must be followed.
+Prefer composition over inheritance.
+Use dependency injection where applicable.
+
 Coding standards:
 - Place all new modules into main package.
 - Place all tests in the `tests` package, mirroring the main package structure where possible.
@@ -49,8 +56,9 @@ Coding standards:
 - The test packages must mirror the structure of the source code packages.
 - Use relative imports within the package.
 - Only add comments if the code is not self-explanatory.
-- Always add docstrings to all modules, functions and classes. For modules, add author and since using project version.
-- Use type hints for all function and method signatures.
+- Always add docstrings to all modules, functions and classes.
+- Add author and since using project version for every module.
+- Add author and since if adding a new function or class to an existing module.- Use type hints for all function and method signatures.
 - Avoid using deprecated types from the `typing` module. Use `collections.abc` instead.
 - Use snake_case for functions and variables, PascalCase for classes, and UPPER_CASE for constants.
 - Maintain a minimum test coverage of 80% for the project.

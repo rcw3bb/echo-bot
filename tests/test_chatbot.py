@@ -49,7 +49,9 @@ def test_run_chatbot_exit(monkeypatch):
     monkeypatch.setattr(chatbot, "send_message", lambda messages: "bye")
     # Patch print to capture output
     output = []
-    monkeypatch.setattr(builtins, "print", output.append)
+    def fake_print(*args, **kwargs):
+        output.append(" ".join(str(arg) for arg in args))
+    monkeypatch.setattr(builtins, "print", fake_print)
     chatbot.run_chatbot()
     assert any("Goodbye!" in str(line) for line in output)
 
@@ -62,7 +64,9 @@ def test_run_chatbot_keyboard_interrupt(monkeypatch):
     monkeypatch.setattr(builtins, "input", raise_keyboard_interrupt)
     monkeypatch.setattr(chatbot, "send_message", lambda messages: "bye")
     output = []
-    monkeypatch.setattr(builtins, "print", output.append)
+    def fake_print(*args, **kwargs):
+        output.append(" ".join(str(arg) for arg in args))
+    monkeypatch.setattr(builtins, "print", fake_print)
     chatbot.run_chatbot()
     assert any("Goodbye!" in str(line) for line in output)
 
@@ -74,7 +78,9 @@ def test_run_chatbot_empty_input(monkeypatch):
     monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
     monkeypatch.setattr(chatbot, "send_message", lambda messages: "bye")
     output = []
-    monkeypatch.setattr(builtins, "print", output.append)
+    def fake_print(*args, **kwargs):
+        output.append(" ".join(str(arg) for arg in args))
+    monkeypatch.setattr(builtins, "print", fake_print)
     chatbot.run_chatbot()
     assert any("Goodbye!" in str(line) for line in output)
 
@@ -88,6 +94,8 @@ def test_run_chatbot_api_error(monkeypatch):
         raise ValueError("API error")
     monkeypatch.setattr(chatbot, "send_message", fail_send_message)
     output = []
-    monkeypatch.setattr(builtins, "print", output.append)
+    def fake_print(*args, **kwargs):
+        output.append(" ".join(str(arg) for arg in args))
+    monkeypatch.setattr(builtins, "print", fake_print)
     chatbot.run_chatbot()
     assert any("[Error]" in str(line) for line in output)

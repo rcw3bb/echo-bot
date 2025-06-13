@@ -1,4 +1,3 @@
-
 # echo-bot
 
 **echo-bot** is a simple command-line chatbot designed for quick and interactive conversations directly in your terminal.
@@ -30,6 +29,11 @@ Run the chatbot in your terminal:
 ```sh
 poetry run python -m echo_bot
 ```
+
+### Commands
+- Type your message and press Enter to chat.
+- Type `exit` or `quit` to leave the chatbot.
+- Type `/reset` to clear the conversation context and start a new session.
 
 ## :wrench: Development
 - All source code is in the `echo_bot` package.
